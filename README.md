@@ -192,3 +192,7 @@ sudo apt install gcc gcc-multilib make cmake
 ```sh
 usermod -l newUsername oldUsername 
 ```
+### list failed logins
+```sh
+grep "Failed password" /var/log/auth.log
+```
