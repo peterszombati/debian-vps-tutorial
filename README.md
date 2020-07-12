@@ -1,3 +1,7 @@
+### apt update
+```sh 
+apt update
+```
 ### disable root login
 ```sh 
 useradd -m {$username}
