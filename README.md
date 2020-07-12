@@ -100,6 +100,11 @@ CREATE USER '{$newuser}'@'%' IDENTIFIED BY '{$password}';
 GRANT ALL ON *.* TO '{$newuser}'@'localhost';
 GRANT ALL ON *.* TO '{$newuser}'@'%'; flush privileges;
 ```
+```sh
+nano /etc/mysql/mariadb.conf.d/50-server.cnf
+bind-address           = 127.0.0.1
+-> #bind-address           = 127.0.0.1
+```
 ### node.js install
 ```sh
 apt install -y curl
