@@ -64,6 +64,10 @@ nano /etc/apt/sources.list
   deb http://deb.debian.org/debian stretch-backports main contrib non-free
   deb-src http://deb.debian.org/debian stretch-backports main contrib non-free
 ```
+```sh
+apt update
+apt install -y python-certbot-nginx -t stretch-backports
+```
 - Confirming Nginx’s Configuration:
 ```sh
 /etc/nginx/sites-available/{$example.com}
