@@ -184,3 +184,7 @@ apt install screen
 ```sh
 sudo apt install gcc gcc-multilib make cmake
 ```
+### changing username
+```sh
+usermod -l newUsername oldUsername 
+```
