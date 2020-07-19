@@ -84,6 +84,18 @@ sudo certbot --nginx -d {$example.com} -d {$www.example.com}
 ```sh
 certbot renew --dry-run
 ```
+### mongodb install (as root)
+```sh
+apt install curl
+curl https://www.mongodb.org/static/pgp/server-4.0.asc | sudo apt-key add -
+nano /etc/apt/sources.list.d/mongodb-org-4.0.list
+-> deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main
+apt update
+apt-get install mongodb-org
+systemctl enable mongod
+systemctl start mongod
+systemctl status mongod
+```
 ### mysql install
 ```sh
 cd /tmp
