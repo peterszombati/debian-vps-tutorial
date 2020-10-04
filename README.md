@@ -191,6 +191,9 @@ npm install -g electron --unsafe-perm=true --allow-root
 ### typescript install
 ```sh
 npm install -g typescript
+
+#recommended version:
+npm install -g typescript@3.9.7
 ```
 ### San Andreas Multiplayer dependencies install
 ```sh
