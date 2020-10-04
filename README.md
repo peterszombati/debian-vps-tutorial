@@ -13,6 +13,10 @@ usermod -aG sudo {$username}
 nano /etc/ssh/sshd_config
   PermitRootLogin no
 ```
+### disable login for username
+```sh 
+passwd -l {$username}
+```
 ### change ssh port
 ```sh
 nano /etc/ssh/sshd_config
