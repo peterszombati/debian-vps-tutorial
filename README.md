@@ -244,3 +244,8 @@ usermod -l newUsername oldUsername
 ```sh
 grep "Failed password" /var/log/auth.log
 ```
+
+### MySQL SSH Tunnel
+```sh
+ssh -N -L {local_port}:127.0.0.1:{dest_port} {username}@{host}
+```
