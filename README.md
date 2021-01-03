@@ -249,3 +249,52 @@ grep "Failed password" /var/log/auth.log
 ```sh
 ssh -N -L {local_port}:127.0.0.1:{dest_port} {username}@{host}
 ```
+
+### Dante Socks5 Proxy
+```sh
+apt install dante-server -y
+mv /etc/danted.conf /etc/danted.conf.backup
+```
+Then we edit the Danted configuration:
+```sh
+nano /etc/danted.conf
+```
+Copy and paste the configuration below:
+```txt
+logoutput: /var/log/socks.log
+internal: eth0 port = 1081
+external: eth0
+clientmethod: none
+socksmethod: none
+user.privileged: root
+user.notprivileged: nobody
+
+client pass {
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    log: error connect disconnect
+}
+client block {
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    log: connect error
+}
+socks pass {
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    command: bind connect udpassociate # for username auth
+    log: error connect disconnect
+    socksmethod: username # for username auth
+}
+socks block {
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    log: connect error
+}
+```
+To create a user and password, and restart use the following command:
+```txt
+useradd proxyusername -r
+passwd proxypassword
+systemctl restart danted
+```
+Open chrome from your pc in command line
+```txt
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --user-data-dir="%USERPROFILE%\proxy-profile" --proxy-server="socks5://{{proxyusername}}:{{proxypassword}}@{{server_ip}}:1081" -incognito
+```
